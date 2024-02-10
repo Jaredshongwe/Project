@@ -1,78 +1,101 @@
 // Local host
 ### Home page
-GET http://localhost:3000/
+GET http://localhost:5050/
 
-### All books
-GET http://localhost:3000/books
+### Authentication
+GET http://localhost:5050/login
 
-### Single book
-GET http://localhost:3000/books/[ID]
+### All records
+GET http://localhost:5050/records
 
-### Create book
-POST http://localhost:3000/books HTTP/1.1
+### Single record
+GET http://localhost:5050/records/[ID]
+
+### Create record
+POST http://localhost:5050/records HTTP/1.1
 Content-Type: application/json
 
 {
-    "title": "Sample Book",
-    "author": "John Author",
-    "genre": "Fiction",
-    "publicationYear": 2022,
-    "isbn": "1234567890",
-    "availabilityStatus": "Available"
+    "albumName": "Abbey Road",
+    "artist": "The Beatles",
+    "releaseYear": 1969,
+    "genre": "Rock",
+    "price": 19.99,
+    "description": "The eleventh studio album by The Beatles, featuring iconic tracks like 'Come Together' and 'Here Comes the Sun'.",
+    "condition": "Good"
 }
 
-### Modify book
-PUT http://localhost:3000/books/[ID] HTTP/1.1
+### Modify record
+PUT http://localhost:5050/records/[ID] HTTP/1.1
 Content-Type: application/json
 
-{
-    "title": "Updated Book Title",
-    "author": "Updated Author",
-    "genre": "Non-fiction",
-    "publicationYear": 2023,
-    "isbn": "0987654321",
-    "availabilityStatus": "Checked Out"
+{   
+     "albumName": "Abbey Road",
+    "artist": "The Beatles",
+    "releaseYear": 1969,
+    "genre": "Rock",
+    "price": 29.99,
+     "description": "The eleventh studio album by The Beatles, featuring iconic tracks like 'Come Together' and 'Here Comes the Sun'.",
+    "condition": "New"
 }
 
-### Delete book
-DELETE http://localhost:3000/books/[ID]
+### Delete record
+DELETE http://localhost:5050/books/[ID]
+
+### All Inventory
+GET http://localhost:5050/inventory
+
+### Single Inventory
+GET http://localhost:5050/inventory/[ID]
+
 
 
 // Render
 ### Home page
-GET https://cse341project2-h69p.onrender.com
+GET https://cse341finalproject-dk7i.onrender.com/
 
-### All books
-GET https://cse341project2-h69p.onrender.com/books
+### Authentication
+GET https://cse341finalproject-dk7i.onrender.com/login
 
-### Single book
-GET https://cse341project2-h69p.onrender.com/books/[ID]
+### All records
+GET https://cse341finalproject-dk7i.onrender.com/records
 
-### Create book
-POST https://cse341project2-h69p.onrender.com/books HTTP/1.1
+### Single record
+GET https://cse341finalproject-dk7i.onrender.com/records/[ID]
+
+### Create record
+POST https://cse341finalproject-dk7i.onrender.com/records HTTP/1.1
 Content-Type: application/json
 
 {
-    "title": "Sample Book",
-    "author": "John Author",
-    "genre": "Fiction",
-    "publicationYear": 2022,
-    "isbn": "1234567890",
-    "availabilityStatus": "Available"
+    "albumName": "Abbey Road",
+    "artist": "The Beatles",
+    "releaseYear": 1969,
+    "genre": "Rock",
+    "price": 19.99,
+    "description": "The eleventh studio album by The Beatles, featuring iconic tracks like 'Come Together' and 'Here Comes the Sun'.",
+    "condition": "Good"
 }
 
-### Modify book
-PUT https://cse341project2-h69p.onrender.com/books/[ID] HTTP/1.1
+### Modify record
+PUT https://cse341finalproject-dk7i.onrender.com/records/[ID] HTTP/1.1
 Content-Type: application/json
 
-{
-    "title": "Updated Book Title",
-    "author": "Updated Author",
-    "genre": "Non-fiction",
-    "publicationYear": 2023,
-    "isbn": "0987654321",
-    "availabilityStatus": "Checked Out"
+{   
+     "albumName": "Abbey Road",
+    "artist": "The Beatles",
+    "releaseYear": 1969,
+    "genre": "Rock",
+    "price": 29.99,
+     "description": "The eleventh studio album by The Beatles, featuring iconic tracks like 'Come Together' and 'Here Comes the Sun'.",
+    "condition": "New"
 }
 
-### Delete book
-DELETE https://cse341project2-h69p.onrender.com/books/[ID]
+### Delete record
+DELETE https://cse341finalproject-dk7i.onrender.com/books/[ID]
+
+### All Inventory
+GET https://cse341finalproject-dk7i.onrender.com/inventory
+
+### Single Inventory
+GET https://cse341finalproject-dk7i.onrender.com/inventory/[ID]
