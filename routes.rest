@@ -1,0 +1,78 @@
+// Local host
+### Home page
+GET http://localhost:3000/
+
+### All books
+GET http://localhost:3000/books
+
+### Single book
+GET http://localhost:3000/books/[ID]
+
+### Create book
+POST http://localhost:3000/books HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Sample Book",
+    "author": "John Author",
+    "genre": "Fiction",
+    "publicationYear": 2022,
+    "isbn": "1234567890",
+    "availabilityStatus": "Available"
+}
+
+### Modify book
+PUT http://localhost:3000/books/[ID] HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Updated Book Title",
+    "author": "Updated Author",
+    "genre": "Non-fiction",
+    "publicationYear": 2023,
+    "isbn": "0987654321",
+    "availabilityStatus": "Checked Out"
+}
+
+### Delete book
+DELETE http://localhost:3000/books/[ID]
+
+
+// Render
+### Home page
+GET https://cse341project2-h69p.onrender.com
+
+### All books
+GET https://cse341project2-h69p.onrender.com/books
+
+### Single book
+GET https://cse341project2-h69p.onrender.com/books/[ID]
+
+### Create book
+POST https://cse341project2-h69p.onrender.com/books HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Sample Book",
+    "author": "John Author",
+    "genre": "Fiction",
+    "publicationYear": 2022,
+    "isbn": "1234567890",
+    "availabilityStatus": "Available"
+}
+
+### Modify book
+PUT https://cse341project2-h69p.onrender.com/books/[ID] HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Updated Book Title",
+    "author": "Updated Author",
+    "genre": "Non-fiction",
+    "publicationYear": 2023,
+    "isbn": "0987654321",
+    "availabilityStatus": "Checked Out"
+}
+
+### Delete book
+DELETE https://cse341project2-h69p.onrender.com/books/[ID]
