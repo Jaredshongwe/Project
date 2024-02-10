@@ -5,10 +5,10 @@
     "description": "Record Store Api for Cs340 final project",
     "version": "1.0.0"
   },
-  "host": "localhost:5050",
+  "host": "cse341finalproject-dk7i.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/login": {
