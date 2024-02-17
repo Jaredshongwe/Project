@@ -2,62 +2,25 @@
   "swagger": "2.0",
   "info": {
     "title": "Record Store API",
-    "description": "Record Store Api for Cs340 final project",
+    "description": "Record Store API for CS340 final project",
     "version": "1.0.0"
   },
   "host": "cse341finalproject-dk7i.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "https",
-    "http"
-  ],
+  "schemes": ["https", "http"],
   "paths": {
-    "/login": {
-      "get": {
-        "tags": [
-          "Auth"
-        ],
-        "description": "Login and authenticate through github auth0.",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/logout": {
-      "get": {
-        "tags": [
-          "Auth"
-        ],
-        "description": "Logout and authenticate through github auth0.",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/records/": {
       "get": {
-        "tags": [
-          "Records"
-        ],
-        "description": "Get all the records in the records collection.",
+        "tags": ["Records"],
+        "description": "Get all records from the records collection.",
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "200": {"description": "OK"},
+          "500": {"description": "Internal Server Error"}
         }
       },
       "post": {
-        "tags": [
-          "Records"
-        ],
-        "description": "Create new record and update inventory.",
+        "tags": ["Records"],
+        "description": "Create a new record and update inventory.",
         "parameters": [
           {
             "name": "body",
@@ -65,50 +28,28 @@
             "schema": {
               "type": "object",
               "properties": {
-                "albumName": {
-                  "example": "Abbey Road"
-                },
-                "artist": {
-                  "example": "The Beatles"
-                },
-                "releaseYear": {
-                  "example": 1969
-                },
-                "genre": {
-                  "example": "Rock"
-                },
-                "price": {
-                  "example": 19.99
-                },
-                "description": {
-                  "example": "The eleventh studio album by The Beatles, featuring iconic tracks like 'Come Together' and 'Here Comes the Sun'."
-                },
-                "condition": {
-                  "example": "Good"
-                }
+                "albumName": {"type": "Abbey Road"},
+                "artist": {"type": "The Beatles"},
+                "releaseYear": {"type": 1969},
+                "genre": {"type": "Rock"},
+                "price": {"type": 24.99},
+                "description": {"type": "Abbey Road is the eleventh studio album by the English rock band the Beatles, released on 26 September 1969 by Apple Records."},
+                "condition": {"type": "Like New"}
               }
             }
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "200": {"description": "OK"},
+          "401": {"description": "Unauthorized"},
+          "500": {"description": "Internal Server Error"}
         }
       }
     },
     "/records/{id}": {
       "get": {
-        "tags": [
-          "Records"
-        ],
-        "description": "Get a single record.",
+        "tags": ["Records"],
+        "description": "Get a single record by ID.",
         "parameters": [
           {
             "name": "id",
@@ -118,25 +59,15 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
         }
       },
       "put": {
-        "tags": [
-          "Records"
-        ],
-        "description": "Update a Record.",
+        "tags": ["Records"],
+        "description": "Update a record by ID.",
         "parameters": [
           {
             "name": "id",
@@ -150,26 +81,155 @@
             "schema": {
               "type": "object",
               "properties": {
-                "albumName": {
-                  "example": "Abbey Road"
-                },
-                "artist": {
-                  "example": "The Beatles"
-                },
-                "releaseYear": {
-                  "example": 1969
-                },
-                "genre": {
-                  "example": "Rock"
-                },
-                "price": {
-                  "example": 29.99
-                },
-                "description": {
-                  "example": "The eleventh studio album by The Beatles, featuring iconic tracks like 'Come Together' and 'Here Comes the Sun'."
-                },
-                "condition": {
-                  "example": "New"
+                "albumName": {"type": "Abbey Road"},
+                "artist": {"type": "The Beatles"},
+                "releaseYear": {"type": 1969},
+                "genre": {"type": "Rock"},
+                "price": {"type": 16.99},
+                "description": {"type": "Abbey Road is the eleventh studio album by the English rock band the Beatles, released on 26 September 1969 by Apple Records."},
+                "condition": {"type": "Used"}
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "401": {"description": "Unauthorized"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
+        }
+      },
+      "delete": {
+        "tags": ["Records"],
+        "description": "Delete a record by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "401": {"description": "Unauthorized"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/inventory/": {
+      "get": {
+        "tags": ["Inventory"],
+        "description": "Get inventory summary.",
+        "responses": {
+          "200": {"description": "OK"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/inventory/{id}": {
+      "get": {
+        "tags": ["Inventory"],
+        "description": "Get a single inventory report by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/user/": {
+      "get": {
+        "tags": ["User"],
+        "description": "Get all users.",
+        "responses": {
+          "200": {"description": "OK"},
+          "500": {"description": "Internal Server Error"}
+        }
+      },
+      "post": {
+        "tags": ["User"],
+        "description": "Create a new user from authentication session.",
+        "responses": {
+          "200": {"description": "OK"},
+          "401": {"description": "Unauthorized"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/user/{id}": {
+      "get": {
+        "tags": ["User"],
+        "description": "Get a single user by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
+        }
+      },
+      "delete": {
+        "tags": ["User"],
+        "description": "Delete a user by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "401": {"description": "Unauthorized"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/user/password/{id}": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "Change password",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "newPassword": {
+                  "type": "string",
+                  "example": "NewPassword123"
                 }
               }
             }
@@ -179,9 +239,6 @@
           "200": {
             "description": "OK"
           },
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           },
@@ -192,12 +249,14 @@
             "description": "Internal Server Error"
           }
         }
-      },
-      "delete": {
+      }
+    },
+    "/user/admin/{id}": {
+      "put": {
         "tags": [
-          "Records"
+          "User"
         ],
-        "description": "Delete a record.",
+        "description": "Set user role to admin",
         "parameters": [
           {
             "name": "id",
@@ -209,9 +268,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
           },
           "401": {
             "description": "Unauthorized"
@@ -225,28 +281,12 @@
         }
       }
     },
-    "/inventory/": {
-      "get": {
+    "/user/user/{id}": {
+      "put": {
         "tags": [
-          "Inventory"
+          "User"
         ],
-        "description": "Get inventory summary.",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/inventory/{id}": {
-      "get": {
-        "tags": [
-          "Inventory"
-        ],
-        "description": "Get single inventory report.",
+        "description": "Set user role to user",
         "parameters": [
           {
             "name": "id",
@@ -259,8 +299,8 @@
           "200": {
             "description": "OK"
           },
-          "400": {
-            "description": "Bad Request"
+          "401": {
+            "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
@@ -268,12 +308,26 @@
           "500": {
             "description": "Internal Server Error"
           }
+        }
+      }
+    },    
+    "/login": {
+      "get": {
+        "tags": ["Auth"],
+        "description": "Login and authenticate through GitHub OAuth.",
+        "responses": {
+          "default": {"description": ""}
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "tags": ["Auth"],
+        "description": "Logout and authenticate through GitHub OAuth.",
+        "responses": {
+          "default": {"description": ""}
         }
       }
     }
-  },
-  "schemas": [
-    "http",
-    "https"
-  ]
+  }
 }

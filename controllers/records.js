@@ -92,6 +92,12 @@ const createRecord = async (req, res) => {
         const response = 'Record created successfully, inventory item added';
         res.status(200).json({ message: response });
     } catch (error) {
+        if (error.name === 'ValidationError') {
+            // Handle validation error for the condition field
+            if (error.errors && error.errors.condition) {
+                return res.status(400).json({ error: 'Invalid value for the condition field' });
+            }
+        }
         console.error('Error creating record:', error);
         res.status(500).json({ error: 'An error occurred while creating the record' });
     }

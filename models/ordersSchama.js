@@ -4,8 +4,14 @@ const orderSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
     },
-    recordId: {
+    albumName: {
         type: mongoose.Schema.Types.ObjectId,
+    },
+    condition: {
+        type: String,
+        required: [true, 'Description is required'],
+        enum: ['New', 'Used', 'Like New', 'Good', 'Fair'],
+        default: 'New'
     },
     quantity: {
         type: Number,
@@ -19,6 +25,9 @@ const orderSchema = new mongoose.Schema({
     },
     orderStatus: {
         type: String,
+        required: [true, 'Description is required'],
+        enum: ['Requested', 'Delivered', 'Cancelled'],
+        default: 'New'
     }
 }, { collection: 'Orders' });
 
