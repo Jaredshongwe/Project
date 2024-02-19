@@ -5,7 +5,7 @@ const orderSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
     },
     albumName: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
     },
     condition: {
         type: String,
@@ -27,7 +27,7 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Description is required'],
         enum: ['Requested', 'Delivered', 'Cancelled'],
-        default: 'New'
+        default: 'Requested'
     }
 }, { collection: 'Orders' });
 

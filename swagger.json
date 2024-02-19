@@ -28,13 +28,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "albumName": {"type": "Abbey Road"},
-                "artist": {"type": "The Beatles"},
-                "releaseYear": {"type": 1969},
-                "genre": {"type": "Rock"},
-                "price": {"type": 24.99},
-                "description": {"type": "Abbey Road is the eleventh studio album by the English rock band the Beatles, released on 26 September 1969 by Apple Records."},
-                "condition": {"type": "Like New"}
+                "albumName": {"example": "Abbey Road"},
+                "artist": {"example": "The Beatles"},
+                "releaseYear": {"example": 1969},
+                "genre": {"example": "Rock"},
+                "price": {"example": 24.99},
+                "description": {"example": "Abbey Road is the eleventh studio album by the English rock band the Beatles, released on 26 September 1969 by Apple Records."},
+                "condition": {"example": "Like New"}
               }
             }
           }
@@ -81,13 +81,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "albumName": {"type": "Abbey Road"},
-                "artist": {"type": "The Beatles"},
-                "releaseYear": {"type": 1969},
-                "genre": {"type": "Rock"},
-                "price": {"type": 16.99},
-                "description": {"type": "Abbey Road is the eleventh studio album by the English rock band the Beatles, released on 26 September 1969 by Apple Records."},
-                "condition": {"type": "Used"}
+                "albumName": {"example": "Abbey Road"},
+                "artist": {"example": "The Beatles"},
+                "releaseYear": {"example": 1969},
+                "genre": {"example": "Rock"},
+                "price": {"example": 16.99},
+                "description": {"example": "Abbey Road is the eleventh studio album by the English rock band the Beatles, released on 26 September 1969 by Apple Records."},
+                "condition": {"example": "Used"}
               }
             }
           }
@@ -145,6 +145,25 @@
         "responses": {
           "200": {"description": "OK"},
           "400": {"description": "Bad Request"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
+        }
+      },
+      "delete": {
+        "tags": ["Inventory"],
+        "description": "Delete Inventory by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "401": {"description": "Unauthorized"},
           "404": {"description": "Not Found"},
           "500": {"description": "Internal Server Error"}
         }
@@ -310,7 +329,131 @@
           }
         }
       }
-    },    
+    }, 
+    "/orders/": {
+      "get": {
+        "tags": ["Orders"],
+        "description": "Get all orders.",
+        "responses": {
+          "200": {"description": "OK"},
+          "500": {"description": "Internal Server Error"}
+        }
+      },
+      "post": {
+        "tags": ["Orders"],
+        "description": "Create a new order.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "albumName": {"example": "Abbey Road"},
+                "condition": {"example": "Used"},
+                "quantity": {"example": "1"}
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {"description": "Created"},
+          "400": {"description": "Bad Request"},
+          "401": {"description": "Unauthorized"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/orders/{id}": {
+      "get": {
+        "tags": ["Orders"],
+        "description": "Get a single order by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
+        }
+      },
+      "put": {
+        "tags": ["Orders"],
+        "description": "Update the status of an order by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "orderStatus": {"type": "string"}
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "401": {"description": "Unauthorized"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
+        }
+      },
+      "delete": {
+        "tags": ["Orders"],
+        "description": "Delete an order by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "401": {"description": "Unauthorized"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/orders/user/{userId}": {
+      "get": {
+        "tags": ["Orders"],
+        "description": "Get all orders made by a user.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {"description": "OK"},
+          "400": {"description": "Bad Request"},
+          "404": {"description": "Not Found"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+       
     "/login": {
       "get": {
         "tags": ["Auth"],

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const Order = require('../models/ordersSchema');
 const User = require('../models/usersSchema');
 
 const getAll = async (req, res) => {
@@ -158,10 +159,13 @@ const deleteUser = async (req, res) => {
             return res.status(404).json({ error: 'User not found' });
         }
 
+        // Delete all orders associated with the user
+        await Order.deleteMany({ userId });
+
         // Delete the user
         await User.findByIdAndDelete(userId);
 
-        const response = 'User deleted successfully';
+        const response = 'User and associated orders deleted successfully';
         res.status(200).json({ message: response });
     } catch (error) {
         console.error('Error deleting User:', error);
