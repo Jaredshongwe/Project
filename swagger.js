@@ -3,7 +3,7 @@ const swaggerAutogen = require('swagger-autogen')();
 const doc = {
     info: {
         title: 'Record Store API',
-        description: 'Record Store Api for Cs340 final project'
+        description: 'Record Store Api for cse341 final project'
     },
     host: 'http://localhost:3000',
     schemas: ['http', 'https']
