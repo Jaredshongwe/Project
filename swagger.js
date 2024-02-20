@@ -5,7 +5,7 @@ const doc = {
         title: 'Record Store API',
         description: 'Record Store Api for Cs340 final project'
     },
-    host: 'http://localhost:5050',
+    host: 'http://localhost:3000',
     schemas: ['http', 'https']
 };
 
